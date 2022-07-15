@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test_task/background_builder.dart';
 import 'package:flutter_test_task/provider/background_color_from_rgb.dart';

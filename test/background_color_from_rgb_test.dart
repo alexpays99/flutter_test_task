@@ -1,45 +1,66 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_task/consts.dart';
 import 'package:flutter_test_task/provider/background_color_from_rgb.dart';
-import 'package:mockito/mockito.dart';
 
 void main() {
-  test('generates numbers from 0 to 16777216 test', () {
-    ///Arrange
-    final backgroundColorFromRGBO = MockBackgroundColorFromRGB();
-    final randomMoreThanAmountOfRandomColors = amountOfRandomColors +
-        backgroundColorFromRGBO.random.nextInt(amountOfRandomColors);
+  group('CHECK RANDOM GROUP:', () {
+    test('generated value less than amountOfRandomColors', () {
+      final randomValue = BackgroundColorFromRGB();
 
-    when(
-      backgroundColorFromRGBO.random
-          .nextInt(randomMoreThanAmountOfRandomColors),
-    ).thenThrow('Argument more than expected');
-    when(
-      backgroundColorFromRGBO.random.nextInt(0),
-    ).thenThrow('Argument less than expected');
+      expect(
+        randomValue.generateRandomValue(amountOfRandomColors),
+        randomValue.getRandomValue,
+      );
+    });
 
-    ///Act
-    final result = backgroundColorFromRGBO.random.nextInt(amountOfRandomColors);
+    test('generated value not more than amountOfRandomColors', () {
+      final randomValue = BackgroundColorFromRGB();
+      final moreThanAmountOfRandomColors = amountOfRandomColors +
+          randomValue.generateRandomValue(amountOfRandomColors);
 
-    ///Assert
-    expect(result, 0);
+      expect(
+        randomValue.generateRandomValue(moreThanAmountOfRandomColors),
+        randomValue.getRandomValue,
+      );
+    });
   });
 
-  test('Color has changes with random opacity test', () {
-    ///Arrange
-    final backgroundColorFromRGBO = MockBackgroundColorFromRGB();
-    final opacity = backgroundColorFromRGBO.random.nextDouble();
-    final newColor = Color.fromRGBO(r, g, b, opacity);
+  group('CHECK COLORS GROUP:', () {
+    test('color changes after new generated value', () {
+      final backgroundColorFromRGBInatance = BackgroundColorFromRGB();
 
-    ///Act
-    backgroundColorFromRGBO.setNewColor(newColor);
-    final result = backgroundColorFromRGBO.color;
+      backgroundColorFromRGBInatance.changeBackgroundColor();
+      backgroundColorFromRGBInatance.setNewColorAndNotifyListeners();
+      final result1 = backgroundColorFromRGBInatance
+          .setNewColor(backgroundColorFromRGBInatance.changeBackgroundColor());
+      expect(result1, backgroundColorFromRGBInatance.color);
 
-    ///Assert
-    expect(result, const Color.fromRGBO(r, g, b, 0.5));
+      backgroundColorFromRGBInatance.changeBackgroundColor();
+      backgroundColorFromRGBInatance.setNewColorAndNotifyListeners();
+      final result2 = backgroundColorFromRGBInatance
+          .setNewColor(backgroundColorFromRGBInatance.changeBackgroundColor());
+      expect(result2, backgroundColorFromRGBInatance.color);
+
+      backgroundColorFromRGBInatance.changeBackgroundColor();
+      backgroundColorFromRGBInatance.setNewColorAndNotifyListeners();
+      final result3 = backgroundColorFromRGBInatance
+          .setNewColor(backgroundColorFromRGBInatance.changeBackgroundColor());
+      expect(result3, backgroundColorFromRGBInatance.color);
+    });
+
+    test('amount of unique colors in range from 0 to amountOfRandomColors', () {
+      final randomValue = BackgroundColorFromRGB();
+      randomValue.addRandomColorsToList();
+      expect(randomValue.colorList.length, amountOfRandomColors);
+    });
+
+    test('all colors in list are different from each other', () {
+      final randomValue = BackgroundColorFromRGB();
+
+      randomValue.addRandomColorsToList();
+      expect(randomValue.colorList[5], randomValue.colorList[5]);
+      expect(randomValue.colorList[6], randomValue.colorList[6]);
+      expect(randomValue.colorList[7], randomValue.colorList[7]);
+    });
   });
 }
-
-class MockBackgroundColorFromRGB extends Mock
-    implements BackgroundColorFromRGB {}

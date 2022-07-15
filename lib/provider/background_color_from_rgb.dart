@@ -6,7 +6,13 @@ import 'package:flutter_test_task/consts.dart';
 ///to notify all listeners that should be notified after color changes.
 class BackgroundColorFromRGB extends ChangeNotifier {
   ///Instance of class Random
-  Random random;
+  Random random = Random();
+
+  ///random value
+  int getRandomValue = 0;
+
+  ///List of random colors. Creates special for testing.
+  final List<Color> colorList = <Color>[];
 
   ///Set white color by default. this color should be changer on
   ///changeBackgroundWithRandomColor method
@@ -15,32 +21,36 @@ class BackgroundColorFromRGB extends ChangeNotifier {
   ///getter of _color
   Color get color => _color;
 
-  ///getter of _color
-  //Random get random => _random;
-
-  ///Constructor
-  BackgroundColorFromRGB() : random = Random(0);
-
-  /// generates random value of type T
-  // T? generateRangomValue<T>({T? value}) {
-  //   T? newValue;
-
-  //   if (value is int) newValue = random?.nextInt(value) as T;
-  //   if (value is double || value == null) newValue = random?.nextDouble() as T;
-  //   // if (value is! int && value is! double) throw Exception("Wrong argument");
-
-  //   return newValue;
-  // }
-
   ///setter of _color
   Color setNewColor(Color value) {
     return _color = value;
   }
 
-  ///generate new random color
-  Color changeBackgroundWithRandomColor() {
-    // Using Color.fromRGBO
+  ///get new random
+  int generateRandomValue(int value) {
+    final result = random.nextInt(value);
+    getRandomValue = result;
 
+    return result;
+  }
+
+  ///add random colors to list. this method dedicated special for testing
+  ///to check quantity of generated colors and compare to [amountOfRandomColors]
+  void addRandomColorsToList() {
+    for (int i = 0; i < amountOfRandomColors; i++) {
+      final color = Color.fromRGBO(
+        random.nextInt(r),
+        random.nextInt(g),
+        random.nextInt(b),
+        random.nextDouble(),
+      );
+      colorList.add(color);
+    }
+  }
+
+  ///generate new color
+  Color changeBackgroundColor() {
+    // Using Color.fromRGBO
     final newColor = Color.fromRGBO(
       random.nextInt(r),
       random.nextInt(g),
@@ -48,28 +58,13 @@ class BackgroundColorFromRGB extends ChangeNotifier {
       random.nextDouble(),
     );
 
-    // final newColor = Color.fromRGBO(
-    //   random?.nextInt(r) as int,
-    //   random?.nextInt(g) as int,
-    //   random?.nextInt(b) as int,
-    //   random?.nextDouble() as double,
-    // );
-
-    // final newColor = Color.fromRGBO(
-    //   generateRangomValue<int>(value: r) as int,
-    //   generateRangomValue<int>(value: g) as int,
-    //   generateRangomValue<int>(value: b) as int,
-    //   generateRangomValue<double>() as double,
-    // );
-
     return newColor;
   }
 
-  ///set generated color from changeBackgroundWithRandomColor() to _color and
+  ///set generated color from [changeBackgroundColor] to _color and
   /// notify listeners about changes.
   void setNewColorAndNotifyListeners() {
-    //_color = changeBackgroundWithRandomColor();
-    final newColor = changeBackgroundWithRandomColor();
+    final newColor = changeBackgroundColor();
     setNewColor(newColor);
     notifyListeners();
   }
