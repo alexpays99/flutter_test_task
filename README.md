@@ -25,6 +25,4 @@
 |:----------------------:|:--------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:-:|---|
 | BackgroundColorFromRGB | /flutter_test_task/lib/provider/background_color_from_rgb.dart | This class is provider of randomly generated color and supplys ChangeNotifie to notify all listeners that should be notified after color changes. |   |   |
 | User                   | /flutter_test_task/lib/domain/models/user.dart                 | The model of user that contains list of users or its methond (in future)                                                                          |   |   |
-|                        |                                                                |                                                                                                                                                   |   |   |
-|                        |                                                                |                                                                                                                                                   |   |   |
-|                        |                                                                |                                                                                                                                                   |   |   |
+
