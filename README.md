@@ -1,5 +1,3 @@
-# flutter_project_template
-
 # Task description
   Test task requires create a simple app that changes background color of screen.
   Additional feature, as it was asked in the test task is displayed list of names, covered in Container with some decoration. Also each container has       rounded container with radius of 50 degrees, and changes its color synchronously with background golor of the app. Both background and rounded           container has the same colors while, as BackgroundColorFromRGB class extens from ChangeNotifier. So while background changes color rounded contained also notified by setNewColorAndNotifyListeners method.
