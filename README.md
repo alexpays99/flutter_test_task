@@ -1,5 +1,5 @@
 # flutter_project_template
-📖 Here you can see the demo of the test task from company I've applied for.
+
 
 - Task description
   Test task requires create a simple app that changes background color of screen.
@@ -7,7 +7,7 @@
   has the same colors while, as BackgroundColorFromRGB class extens from ChangeNotifier. So while background changes color rounded contained also notified
   by setNewColorAndNotifyListeners method.
   
-# Demo
+# Here you can see the demo of the test task from a company I've applied for.
   ![vokoscreenNG-2022-07-17_22-42-33](https://user-images.githubusercontent.com/32728226/179422650-562d27a7-9591-4329-bd36-ce1452d26786.gif)
 
 
