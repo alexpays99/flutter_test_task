@@ -13,3 +13,9 @@ const int g = amountOfRandomColors;
 
 ///blue
 const int b = amountOfRandomColors;
+
+///width of container
+const double width = 30.0;
+
+///height of container
+const double height = 30.0;

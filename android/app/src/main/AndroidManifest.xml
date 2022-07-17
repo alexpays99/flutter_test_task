@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="flutter_test_task.flutter_test_task">
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="flutter_test_task"
         android:name="${applicationName}"

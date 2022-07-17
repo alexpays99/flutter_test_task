@@ -15,7 +15,7 @@ void main() {
 
 ///Head of other widgets
 class Main extends StatelessWidget {
-  ///asdasd
+  ///
   const Main({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
