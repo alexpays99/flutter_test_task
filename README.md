@@ -26,3 +26,11 @@
 | BackgroundColorFromRGB | /flutter_test_task/lib/provider/background_color_from_rgb.dart | This class is provider of randomly generated color and supplys ChangeNotifie to notify all listeners that should be notified after color changes. |   |   |
 | User                   | /flutter_test_task/lib/domain/models/user.dart                 | The model of user that contains list of users or its methond (in future)                                                                          |   |   |
 
+  
+# Methods
+  |            **Name**           | **Type** |                                                                          **Description**                                                                          |   |   |
+|:-----------------------------:|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-:|---|
+| generateRandomValue           | int      | returns new random integer and puts value in generateRandomValue                                                                                                  |   |   |
+| addRandomColorsToList         | void     | add random colors fo list metod. dedicates special for testing in test file, to check quantity of generated colors and compare them to amount of generated colors |   |   |
+| changeBackgroundColor         | Color    | returns new generated color                                                                                                                                       |   |   |
+| setNewColorAndNotifyListeners | void     | set generated color from [changeBackgroundColor] to _color and notify listeners about changes.               
