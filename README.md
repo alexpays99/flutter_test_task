@@ -8,7 +8,8 @@
   by setNewColorAndNotifyListeners method.
   
 # Demo
-  
+  ![vokoscreenNG-2022-07-17_22-42-33](https://user-images.githubusercontent.com/32728226/179422650-562d27a7-9591-4329-bd36-ce1452d26786.gif)
+
 
 # Data
 |    **Name**    |   **Type**   |                            **Path**                            |                         **Description**                         |   |
